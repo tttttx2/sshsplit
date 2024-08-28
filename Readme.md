@@ -4,9 +4,9 @@
 - Traefik main entrypoint: Bound on port 10022 --> Change this in docker-compose.yml within traefik config
 
 # Try it
-`docker compose up --build -d`
-`ssh -p 10022 sshuser@127.0.0.1` # Try to connect from whatever IP
-`ssh -p 10022 sshuser@192.168.1.90`# Try to connect from whitelisted Client IP
+`docker compose up --build -d`  
+`ssh -p 10022 sshuser@127.0.0.1` # Try to connect from whatever IP  
+`ssh -p 10022 sshuser@192.168.1.90`# Try to connect from whitelisted Client IP  
 
 username: sshuser
 password: password
