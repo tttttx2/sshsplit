@@ -1,0 +1,24 @@
+services:
+  ssh1:
+    build: ./ssh
+    hostname: ssh1
+    ports:
+      - 10122:22
+
+  ssh2:
+    build: ./ssh
+    hostname: ssh2
+    ports:
+      - 10222:22
+
+  traefik:
+    image: "traefik:v3.0"
+    container_name: "traefik"
+    network_mode: host
+    volumes:
+      - ./traefik/:/data
+    command:
+      - "--api.insecure=false"
+      - "--api.dashboard=false"
+      - "--entryPoints.ssh.address=:10022"
+      - "--providers.file.filename=/data/ssh.yml"

@@ -1,0 +1,21 @@
+tcp:
+  routers:
+    Router-1:
+      # By default, routers listen to every EntryPoints.
+      rule: "ClientIP(`127.0.0.1`)"
+      service: "ssh1"
+
+    Router-2:
+      # By default, routers listen to every EntryPoints.
+      rule: "!ClientIP(`127.0.0.1`)"
+      service: "ssh2"
+
+  services:
+    ssh1:
+      loadBalancer:
+        servers:
+        - address: "127.0.0.1:10122"
+    ssh2:
+      loadBalancer:
+        servers:
+        - address: "127.0.0.1:10222"
